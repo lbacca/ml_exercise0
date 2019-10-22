@@ -15,9 +15,8 @@ dataset1 <- fread("FacultySalaries.csv")
 ## Faculty Salaries
 
 The dataset has 50 observations and 6 columns including the target variable.
-
 #### asst.prof.salary
-The target variable is **asst.prof.salary** and is numeric. It's values range from 35.30 to 56.40 with a mean of 43.28 and a median of 42.45. As seen in the boxplot there is an outlier on the right side. It might therefore be a good option to scale the target variable by for example diving it by its standard deviation.
+The target variable is **asst.prof.salary** and is numeric. It's values range from 35.30 to 56.40 with a mean of 43.28 and a median of 42.45. As seen in the boxplot there is an outlier on the right side. It might therefore be a good option to scale the target variable by for example diving it by its standard deviation. This might be needed to create a stable prediction but always depends on the used method.
 
 ```{r, echo = FALSE, out.width = '40%', out.height = '40%'}
 boxplot(dataset1$asst.prof.salary, horizontal = TRUE)
