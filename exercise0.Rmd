@@ -1,19 +1,57 @@
 ---
 title: 'Machine Learning: Exercise 0'
-author: "Lorenz Bacca"
-date: "22 10 2019"
-output: pdf_document
+author: "Lorenz Bacca & Nesrine Haddar"
+date: "22.10.2019"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(data.table)
+library(ggplot2)
+dataset1 <- fread("FacultySalaries.csv")
 ```
 
-## R Markdown
+## Faculty Salaries
 
+The dataset has 50 observations and 6 columns including the target variable.
 
-```{r}
+#### asst.prof.salary
+The target variable is **asst.prof.salary** and is numeric. It's values range from 35.30 to 56.40 with a mean of 43.28 and a median of 42.45. As seen in the boxplot there is an outlier on the right side. It might therefore be a good option to scale the target variable by for example diving it by its standard deviation.
 
+```{r, echo = FALSE, out.width = '40%', out.height = '40%'}
+boxplot(dataset1$asst.prof.salary, horizontal = TRUE)
 ```
 
+#### University
+The variable **University** has categorical unique values that contain characters with the universities name.
 
+#### CIC.institutions
+The variable **CIC.institutions** has categorical values that are encoded as 0s and 1s. 
+
+```{r, echo = FALSE, warning= FALSE, message= FALSE, out.width = '40%', out.height = '40%'}
+ggplot(data = dcast(as.data.table(dataset1$CIC.institutions), formula = V1 ~ .), aes(x = V1, y = .)) + geom_bar(stat = "identity")
+```
+
+#### average.salary
+The variable **average.salary** is numeric. It's values range from 45.75 to 75.54 with a mean of 58.20 and a median of 56.99. The data does not contain outliers or is skewed it should therefore not be needed to apply preprocessing. (This is of course depening on the used method)
+
+```{r, echo = FALSE, out.width = '40%', out.height = '40%'}
+boxplot(dataset1$average.salary, horizontal = TRUE)
+```
+
+#### full.prof.salary
+The variable **full.prof.salary** is numeric. It's values range from 55.90 to 96.50 with a mean of 73.91 and a median of 72.00. The data does not contain outliers or is skewed it should therefore not be needed to apply preprocessing. (This is of course depening on the used method)
+
+```{r, echo = FALSE, out.width = '40%', out.height = '40%'}
+boxplot(dataset1$full.prof.salary, horizontal = TRUE)
+```
+
+#### assoc.prof.salary
+The variable **assoc.prof.salary** is numeric. It's values range from 41.80 to 70.00 with a mean of 51.43 and a median of 50.65. As seen in the boxplot there is an outlier on the right side. It might therefore be a good option to scale the target variable by for example diving it by its standard deviation.
+
+```{r, echo = FALSE, out.width = '40%', out.height = '40%'}
+boxplot(dataset1$assoc.prof.salary, horizontal = TRUE)
+```
+
+## Dataset 2
