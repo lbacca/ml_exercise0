@@ -1,0 +1,19 @@
+---
+title: 'Machine Learning: Exercise 0'
+author: "Lorenz Bacca"
+date: "22 10 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r}
+
+```
+
+
